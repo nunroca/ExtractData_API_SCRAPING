@@ -37,14 +37,14 @@ def DAT_CLIENT():
     client_list2["X"]=client_list2["X"].str.replace(",",".")
     client_list2["Y"]=client_list2["Y"].str.replace(",",".")
     client_list2=client_list2[client_list2["rang_vent"]=="Rango 4"]
-    client_list2=client_list2.sample(n=10,random_state=25)
+    #client_list2=client_list2.sample(n=10,random_state=25)
     client_list2.reset_index(drop=True, inplace=True)
     client_list2["Temperatura"]=0
     return(client_list2)
 
 def temp_weather(x,y):   
-    clave_api ='483b23465b00c657ff8f5e197c0be5e9'
-    url = f"http://api.openweathermap.org/data/2.5/weather?lat={y}&lon={x}&appid={clave_api}&units=metric"
+    key_api ='Enter your API key'
+    url = f"http://api.openweathermap.org/data/2.5/weather?lat={y}&lon={x}&appid={key_api}&units=metric"
     respuesta = requests.get(url)
     datos_clima = respuesta.json()
     temp = datos_clima['main']['temp']
